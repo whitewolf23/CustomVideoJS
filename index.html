@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="https://vjs.zencdn.net/7.5.5/video-js.css" rel="stylesheet" />
+    <link href="./css/index.css" rel="stylesheet"/>
+
+    
+
+
+    <title>Custom Video.js</title>
+    <style>
+        /* #instructions { max-width: 640px; text-align: left; margin: 30px auto; }
+        #instructions textarea { width: 100%; height: 100px; } */
+        
+        /* Show the controls (hidden at the start by default) */
+        .video-js .vjs-control-bar { 
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+        }
+      
+        /* Make the demo a little prettier */
+        body {
+          margin-top: 20px;
+          background: #222;
+          text-align: center; 
+          color: #aaa;
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+          background: radial-gradient(#333, hsl(200,30%,6%) );
+        }
+      
+        a, a:hover, a:visited { color: #76DAFF; }
+      </style>
+      
+</head>
+
+<body>
+    <video
+      id="my-video"
+      class="video-js vjs-default-skin "
+      controls
+      preload="auto"
+      width="640"
+      height="360"
+      poster="//i.imgur.com/7wElKwu.jpg"
+      data-setup="{}"
+    >
+    <source src="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8" type="application/x-mpegURL"/>
+      <p class="vjs-no-js">
+        To view this video please enable JavaScript, and consider upgrading to a
+        web browser that
+        <a href="https://videojs.com/html5-video-support/" target="_blank"
+          >supports HTML5 video</a
+        >
+      </p>
+    </video>
+
+    <!-- 자바스크립트 연동 테스트 위한 버튼  -->
+    <input class="test" type="button" id="hw" value="Hello world" />
+
+  </body>
+</html>
+
+<script src="./js/index.js"></script>
+<script src="https://vjs.zencdn.net/7.5.5/video.js"></script>
+<!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+<script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
