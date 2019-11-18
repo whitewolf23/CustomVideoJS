@@ -1,72 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <link href="https://vjs.zencdn.net/7.5.5/video-js.css" rel="stylesheet" />
-    <link href="./css/index.css" rel="stylesheet"/>
-
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>클론코딩 - 네이버 클라우드 플랫폼 비디어 플레이어</title>
 
 
-    <title>Custom Video.js</title>
-    <style>
-        /* #instructions { max-width: 640px; text-align: left; margin: 30px auto; }
-        #instructions textarea { width: 100%; height: 100px; } */
-        
-        /* Show the controls (hidden at the start by default) */
-        .video-js .vjs-control-bar { 
-          display: -webkit-box;
-          display: -webkit-flex;
-          display: -ms-flexbox;
-          display: flex;
-        }
-      
-        /* Make the demo a little prettier */
-        body {
-          margin-top: 20px;
-          background: #222;
-          text-align: center; 
-          color: #aaa;
-          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-          background: radial-gradient(#333, hsl(200,30%,6%) );
-        }
-      
-        a, a:hover, a:visited { color: #76DAFF; }
-      </style>
-      
+<!-- video.js css 적용 -->
+<link rel="stylesheet" href="/resources/css/video-js.7.3.0.min.css">
+<!-- <link href="https://vjs.zencdn.net/7.5.5/video-js.css" rel="stylesheet" />  -->
+<link rel="stylesheet" href="/resources/css/videojs.custom.css">
+
+<!-- 자막 적용 -->
+<link href="/resources/fonts/videojs.custom.ttf" rel="stylesheet">
+
+<!-- 폰트 적용 -->
+<link href="/resources/fonts/videojs.custom.svg" rel="stylesheet">
+
+<!-- 파비콘 -->
+
+<!-- 스타일 시트  -->
+<link rel="stylesheet" href="/resources/css/index.css">
+
+<!-- 자바스크립트 -->
+<script src="/resources/js/video-js.7.3.0.min.js"></script>
+<!-- <script src="https://vjs.zencdn.net/7.5.5/video.js"></script> -->
+
+<!-- 제이쿼리 적용 -->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
+
+<!-- https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8 -->
 <body>
-    <video
-      id="my-video"
-      class="video-js vjs-default-skin "
-      controls
-      preload="auto"
-      width="640"
-      height="360"
-      poster="//i.imgur.com/7wElKwu.jpg"
-      data-setup="{}"
-    >
-    <source src="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8" type="application/x-mpegURL"/>
-      <p class="vjs-no-js">
-        To view this video please enable JavaScript, and consider upgrading to a
-        web browser that
-        <a href="https://videojs.com/html5-video-support/" target="_blank"
-          >supports HTML5 video</a
-        >
-      </p>
-    </video>
+  <div id="wrap" class="monitoring"> 
+    <!-- 헤더 -->
+    <header id="header">
+      <div class="header-cont">
+        <h1 class="header-logo">
+          <a href="#">
+            <span class="blind">클론코딩 플레이어</span>
+          </a>
+        </h1>
+      </div>
+    </header>
+    <br><br><br><br><br>
 
-    <!-- 자바스크립트 연동 테스트 위한 버튼  -->
-    <input class="test" type="button" id="hw" value="Hello world" />
+    <div class="container">
+      <div class="content">
+        <!-- url Description -->
+        <br><br>
+        <div class="col-sm-8">
+          <div class="urlDiscription">
+            <!-- form 에 id="service_url" ??? -->
+            <form >
+              <textarea 
+                id="service_url" 
+                class="input-text"
+                type="text"
+                rows="10" 
+                vaule="" 
+                placeholder="여기다 URL를 넣어주세요"></textarea>
+              <input type="button" class="btn" value="URL 재생" onclick="play();">
+            </form>
+          </div>
+        </div>
+        <!-- video.js -->
+        <div class="col-sm-8">
+          <video
+            id="example-video"
+            class="video-js vjs-default-skin"
+            controls
+            style="width:100%;"            
+            height=480px;
+            preload="auto"
+            autoplay
+            loop
+            poster="https://kr.object.ncloudstorage.com/streaming/poster.png"
+            data-setup='{}'>
 
-  </body>
+          </video>
+        </div>
+    </div>
+  </div>
+      <br>
+  </div>
+</div>
+
+  <!-- 제이쿼리 & 자바스크립트 -->
+  <script type="text/javascript">
+
+    $('.video-js .vjs-big-play-button').hide();
+    $('.button .vjs-big-play-button').hide();
+    $('.video-js .vjs-big-play-button').attr('style','display: none');
+    $('.video-js .vjs-big-play-button').hide();
+    const testURL = "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+    // 버튼 클릭 시, 해당 함수를 실행한다. 
+    function play() {
+      var player = videojs('example-video');
+      var url = document.getElementById('service_url').value;
+      player.src(testURL || url);
+      console.log(url)
+      player.ready(function(){
+        player.play()
+      })
+    }
+
+  </script>
+</body>
 </html>
-
-<script src="./js/index.js"></script>
-<script src="https://vjs.zencdn.net/7.5.5/video.js"></script>
-<!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
-<script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
