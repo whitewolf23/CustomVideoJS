@@ -9,14 +9,12 @@
 
 <!-- video.js css 적용 -->
 <link rel="stylesheet" href="/resources/css/video-js.7.3.0.min.css">
-<!-- <link href="https://vjs.zencdn.net/7.5.5/video-js.css" rel="stylesheet" />  -->
 <link rel="stylesheet" href="/resources/css/videojs.custom.css">
 
 <!-- 자막 적용 -->
 <link href="/resources/fonts/videojs.custom.ttf" rel="stylesheet">
 
 <!-- 폰트 적용 -->
-<!-- <link href="/resources/fonts/videojs.custom.svg" rel="stylesheet"> -->
 <link href="/resources/fonts/videojs.custom.svg" rel="stylesheet">
 
 <!-- 파비콘 -->
@@ -26,10 +24,12 @@
 
 <!-- 자바스크립트 -->
 <script src="/resources/js/video-js.7.3.0.min.js"></script>
-<!-- <script src="https://vjs.zencdn.net/7.5.5/video.js"></script> -->
+<script src="/node_modules/videojs-pip/dist/videojs.pip.js"></script>
+<link rel="stylesheet" href="/resources/js/index.js">
 
 <!-- 제이쿼리 적용 -->
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 </head>
 
 
@@ -88,20 +88,26 @@
       <br>
   </div>
 </div>
-
   <!-- 제이쿼리 & 자바스크립트 -->
-  <script type="text/javascript">
+
+
+
+<script type="text/javascript">
 
     // $('.video-js .vjs-big-play-button').hide();
     // $('.button .vjs-big-play-button').hide();
     // $('.video-js .vjs-big-play-button').attr('style','display: none');
     // $('.video-js .vjs-big-play-button').hide();
 
+  
     // const testURL = ""
     const testURL = "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+    
     // 버튼 클릭 시, 해당 함수를 실행한다. 
+    var player = videojs('example-video');
+    
+    
     function play() {
-      var player = videojs('example-video');
       var url = document.getElementById('service_url').value;
       player.src(testURL || url);
       console.log(url)
