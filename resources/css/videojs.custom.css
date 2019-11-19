@@ -63,3 +63,9 @@
 .vjs-playback-rate-label { line-height:3em; text-transform:uppercase !important;}
 
 .vjs-live .vjs-progress-control { display:none !important; }
+
+
+/* 빅 버튼 없애기 */
+.video-js .vjs-big-play-button {
+  /* display: none; */
+}
