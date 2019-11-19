@@ -15,6 +15,19 @@ http://kjwqlsawnlxj1099443.cdn.ntruss.com/demo/hlsplayer
 
 
 # 업데이트
+
+## 2019 11 19 
+* cdn 충돌로 인해 PIP 적용이 되질 않앗음. 7.3.0 -> brightcove 에 cdn 을 적용시키고, div vjs-pip-container 로 감싸안으니 기능 구현
+
+* 하지만, 기존에 레이아웃이 깨지는 현상과 Primary color 가 변경되는 부분이 존재 -> playback 레이아웃이 분홍색으로 변경됨.
+
+* data-setup 에서 playback 적용 가능 
+
+* 사파리에서는 pip 기능이 적용되지 않음, 크롬에서는 구현 
+
+* [참고] https://support.brightcove.com/picture-picture-plugin-aka-floating-or-pinned
+
+
 ## 2019 11 18 
 * 데모페이지 소스를 그대로 베껴서 일단 구동시켜 봄 
 * font 적용에 필요한 ttf, eof, woff 의 차이를 알아야함. 
